@@ -27,6 +27,10 @@ class ImageProcessor:
             btn_frame, text="Process Image", command=self.process_image
         )
         process_btn.pack(side=tk.LEFT, padx=5)
+        download_btn = ttk.Button(
+            btn_frame, text="Download Processed Image", command=self.download_image
+        )
+        download_btn.pack(side=tk.LEFT, padx=5)
         img_frame = ttk.Frame(main_frame)
         img_frame.pack(fill=tk.BOTH, expand=True)
         original_frame = ttk.LabelFrame(img_frame, text="Original Image", padding="10")
@@ -44,6 +48,24 @@ class ImageProcessor:
         img_frame.grid_rowconfigure(0, weight=1)
         self.status_label = ttk.Label(main_frame, text="Ready to load an image")
         self.status_label.pack(pady=5)
+
+    def download_image(self):   
+        if self.processed_image is None:
+            self.status_label.config(text="Error: No processed image to download")
+            return
+
+        filetypes = [("PNG files", "*.png"), ("All files", "*.*")]
+        save_path = filedialog.asksaveasfilename(
+            title="Save Processed Image", defaultextension=".png", filetypes=filetypes
+        )
+        if save_path:
+            try:
+                processed_image_bgr = cv2.cvtColor(self.processed_image, cv2.COLOR_RGB2BGR)
+                cv2.imwrite(save_path, processed_image_bgr)
+                self.status_label.config(text=f"Image saved to {os.path.basename(save_path)}")
+            except Exception as e:
+                self.status_label.config(text=f"Error saving the image: {str(e)}")
+
 
     def load_image(self):
         filetypes = [
