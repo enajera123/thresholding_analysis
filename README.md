@@ -7,16 +7,16 @@
 The Mammography Analysis Tool is a Python application designed for processing mammography images. It provides a user-friendly graphical interface that allows users to load, process, and visualize mammography images. The application utilizes OpenCV for image manipulation and analysis, enabling users to identify and mark areas of concentration in the images.
 
 ## Example Results
-
 ### Before and After Processing
 
 The Mammography Analysis Tool allows you to see the original mammography image alongside the processed version, highlighting areas of concentration that may require further examination.
 
-![Before Processing](mamografia.png)
-*Original mammography image*
+<p align="center">
+    <img src="mamografia.png" alt="Before Processing" width="45%">
+    <img src="resultado_mamografia.png" alt="After Processing" width="45%">
+</p>
 
-![After Processing](resultado_mamografia.png)
-*Processed image with highlighted areas of concentration*
+*Left: Original mammography image. Right: Processed image with highlighted areas of concentration.*
 
 The processing algorithm applies specialized filters to enhance potential regions of interest, making it easier for medical professionals to identify areas that might need closer examination.
 
