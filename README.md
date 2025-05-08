@@ -52,7 +52,7 @@ Note: These images are examples only. Always consult with qualified medical prof
 
 1. Run the application:
     ```
-    python src/main.py
+    python main.py
     ```
 
 2. Use the "Load Image" button to select a mammography image from your file system.
